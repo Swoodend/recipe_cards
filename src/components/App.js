@@ -5,7 +5,7 @@ import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import DeleteButton from './DeleteButton';
 
-//TODO: implement the cardBody component
+//TODO: implement the recipeHeader component
 
 class App extends Component {
   constructor(props){

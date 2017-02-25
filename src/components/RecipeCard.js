@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RecipeHeader from './RecipeHeader';
 
 class RecipeCard extends Component {
   render(){
@@ -6,7 +7,7 @@ class RecipeCard extends Component {
       <div className="max-width">
         <div className="recipe-card">
           {this.props.children}
-          <h1>{this.props.title}</h1>
+          <RecipeHeader title={this.props.title}/>
         </div>
       </div>
     );
