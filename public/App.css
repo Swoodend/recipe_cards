@@ -3,9 +3,14 @@ html, body{
   padding: 0;
 }
 
+.main-header{
+  width: 100%;
+  text-align: center;
+}
+
 .recipe-cards {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   position: relative;
   background-color: deepskyblue;
 }
@@ -47,6 +52,7 @@ html, body{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .recipe-button{
@@ -60,4 +66,22 @@ html, body{
   margin: 0 auto;
   border-radius: 5px;
   padding: 3px;
+}
+
+.recipe-card {
+  text-align: center;
+  width: 500px;
+  height: 200px;
+  background: green;
+}
+
+.recipe-card h1 {
+  margin: 0;
+}
+
+.max-width {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
