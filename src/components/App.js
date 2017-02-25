@@ -38,14 +38,12 @@ class App extends Component {
   }
 
   exitModalMode(){
-    console.log('emm called');
     this.setState({
       modalMode: false
     });
   }
 
   addNewRecipe(recipe){
-    console.log('anr called');
     let newRecipes = this.state.recipeCards;
     newRecipes.push(recipe);
     this.setState({
@@ -72,7 +70,7 @@ class App extends Component {
 
     let cards = this.state.recipeCards.map((cardTitle, i) => {
       return (
-        <RecipeCard key={i} title={cardTitle}>
+        <RecipeCard num={i} key={i} title={cardTitle}>
           <DeleteButton num={i} deleteCard={this.deleteCard}/>
         </RecipeCard>
       )
