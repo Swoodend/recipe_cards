@@ -3,8 +3,9 @@ import '../../public/App.css';
 import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
+import DeleteButton from './DeleteButton';
 
-//TODO: render out the cards in this.state.recipeCards
+//TODO: add functionality to delete cards
 
 class App extends Component {
   constructor(props){
@@ -61,7 +62,12 @@ class App extends Component {
     let style = modal ? {filter: "grayscale(100%)"} : null;
 
     let cards = this.state.recipeCards.map((cardTitle) => {
-      return <RecipeCard title={cardTitle}/>;
+      return (
+        <RecipeCard title={cardTitle}>
+          <DeleteButton />
+        </RecipeCard>
+      )
+
     });
     return (
       <div>
