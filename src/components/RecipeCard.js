@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RecipeHeader from './RecipeHeader';
 import CardBody from './CardBody';
+import AddIngredientInput from './AddIngredientInput';
 
 //this.props.num is the card number
 
@@ -13,6 +14,7 @@ class RecipeCard extends Component {
           {this.props.children}
           <RecipeHeader title={this.props.title}/>
           <CardBody />
+          <AddIngredientInput />
         </div>
       </div>
     );
