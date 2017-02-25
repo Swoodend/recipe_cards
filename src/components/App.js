@@ -5,7 +5,7 @@ import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import DeleteButton from './DeleteButton';
 
-//TODO: add functionality to delete cards
+//TODO: implement the cardBody component
 
 class App extends Component {
   constructor(props){
@@ -14,6 +14,7 @@ class App extends Component {
     this.exitModalMode = this.exitModalMode.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.addNewRecipe = this.addNewRecipe.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
     this.state = {
       recipeCards: [],
       modalMode: false
@@ -52,6 +53,14 @@ class App extends Component {
     });
   }
 
+  deleteCard(i){
+    let removedCard = this.state.recipeCards;
+    removedCard.splice(i, 1);
+    this.setState({
+      recipeCards: removedCard
+    });
+  }
+
   render() {
     let modal = this.state.modalMode ?
       <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}/> :
@@ -61,10 +70,10 @@ class App extends Component {
 
     let style = modal ? {filter: "grayscale(100%)"} : null;
 
-    let cards = this.state.recipeCards.map((cardTitle) => {
+    let cards = this.state.recipeCards.map((cardTitle, i) => {
       return (
-        <RecipeCard title={cardTitle}>
-          <DeleteButton />
+        <RecipeCard key={i} title={cardTitle}>
+          <DeleteButton num={i} deleteCard={this.deleteCard}/>
         </RecipeCard>
       )
 
