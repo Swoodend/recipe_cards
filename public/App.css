@@ -69,6 +69,7 @@ html, body{
 }
 
 .recipe-card {
+  position: relative;
   text-align: center;
   width: 500px;
   height: 200px;
@@ -84,4 +85,14 @@ html, body{
   display: flex;
   justify-content: center;
   margin: 20px;
+}
+
+.delete-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 20px;
+  width: 20px;
+  color: white;
+  background: red;
 }
