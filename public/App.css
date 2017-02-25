@@ -1,0 +1,63 @@
+html, body{
+  margin:0;
+  padding: 0;
+}
+
+.recipe-cards {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.modal {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 250px;
+  background: white;
+  outline: 1px solid black;
+  z-index: 400;
+}
+
+.new-recipe-input {
+  width: 70%;
+  height: 25px;
+  outline: 1px solid black;
+}
+
+.save {
+  display: block;
+  height: 35px;
+  width: 90px;
+  background: lightgreen;
+  color: white;
+  border-radius: 5px;
+  padding: 3px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: none;
+
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-button{
+  line-height: 35px;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 35px;
+  width: 90px;
+  background: lightgreen;
+  color: white;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 3px;
+}
