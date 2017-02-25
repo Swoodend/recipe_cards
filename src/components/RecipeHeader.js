@@ -4,20 +4,16 @@ class RecipeHeader extends Component {
   constructor(props){
     super(props);
     this.onClick = this.onClick.bind(this);
-    this.state = {
-      clicked: false
-    }
   }
 
   onClick(){
-    this.setState({
-      clicked: !this.state.clicked
-    });
+    //set the state of cardBody to hidden
   }
 
   render(){
+    let style = {borderBottom: '2px solid red'};
     return (
-      <h1>{this.props.title}</h1>
+      <h1 style={style}>{this.props.title}</h1>
     )
   }
 }
