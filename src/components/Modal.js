@@ -9,7 +9,6 @@ class Modal extends Component {
   handleSubmit(e){
     let recipeTitle = this.refs.newRecipe.value;
     e.preventDefault();
-    console.log('you submitted the form');
     this.props.exitModalMode();
     this.props.addNewRecipe(recipeTitle);
   }
