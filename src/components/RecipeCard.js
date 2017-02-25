@@ -5,6 +5,7 @@ class RecipeCard extends Component {
     return (
       <div className="max-width">
         <div className="recipe-card">
+          {this.props.children}
           <h1>{this.props.title}</h1>
         </div>
       </div>
