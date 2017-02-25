@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import '../../public/App.css';
 import Modal from './Modal';
+import NewRecipe from './NewRecipe';
+
+//TODO: add recipe button its own component
+//TODO: render out the cards in this.state.recipeCards
 
 class App extends Component {
   constructor(props){
@@ -51,18 +55,8 @@ class App extends Component {
     let modal = this.state.modalMode ?
       <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}/> :
        null;
-    let button;
-
-    if (this.state.modalMode){
-      button = null;
-    } else {
-      button =
-        <div
-          onClick={this.enterModalMode}
-          className="recipe-button">
-          Add a Recipe
-        </div>;
-    }
+    let button = this.state.modalMode ? null :
+      <NewRecipe enterModalMode={this.enterModalMode}/>
 
     return (
       <div ref="outsideOfModal" className="recipe-cards">
