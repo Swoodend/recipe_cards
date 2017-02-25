@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../public/App.css';
 import Modal from './Modal';
 import NewRecipe from './NewRecipe';
+import RecipeCard from './RecipeCard';
 
 //TODO: render out the cards in this.state.recipeCards
 
@@ -58,11 +59,16 @@ class App extends Component {
       <NewRecipe enterModalMode={this.enterModalMode}/>
 
     let style = modal ? {filter: "grayscale(100%)"} : null;
+
+    let cards = this.state.recipeCards.map((cardTitle) => {
+      return <RecipeCard title={cardTitle}/>;
+    });
     return (
       <div>
         <div style={style} ref="outsideOfModal" className="recipe-cards">
           <div className="card-container">
-            <h1>Recipe Cards</h1>
+            <h1 className="main-header">Recipe Cards</h1>
+            {cards}
           </div>
           {button}
         </div>
