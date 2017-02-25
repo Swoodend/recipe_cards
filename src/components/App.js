@@ -3,7 +3,6 @@ import '../../public/App.css';
 import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 
-//TODO: add recipe button its own component
 //TODO: render out the cards in this.state.recipeCards
 
 class App extends Component {
@@ -58,14 +57,18 @@ class App extends Component {
     let button = this.state.modalMode ? null :
       <NewRecipe enterModalMode={this.enterModalMode}/>
 
+    let style = modal ? {filter: "grayscale(100%)"} : null;
     return (
-      <div ref="outsideOfModal" className="recipe-cards">
-        {modal}
-        <div className="card-container">
-          <h1>Recipe Cards</h1>
+      <div>
+        <div style={style} ref="outsideOfModal" className="recipe-cards">
+          <div className="card-container">
+            <h1>Recipe Cards</h1>
+          </div>
+          {button}
         </div>
-        {button}
+        {modal}
       </div>
+
     );
   }
 }
