@@ -73,7 +73,7 @@ html, body{
   text-align: center;
   width: 500px;
   height: 200px;
-  background: green;
+  background: white;
 }
 
 .recipe-card h1 {
@@ -95,4 +95,14 @@ html, body{
   width: 20px;
   color: white;
   background: red;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredient-list li {
+  border-bottom: 1px solid blue;
+  padding: 5px;
 }
