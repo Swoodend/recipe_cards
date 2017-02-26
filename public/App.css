@@ -120,11 +120,12 @@ input:focus {
 }
 
 .add-ingredient-input {
-  width: 100%;
+  width: calc(100% - 25px);
   height: 55px;
-  padding: 0;
+  padding-left: 25px;
   margin: 0;
   border: 0;
   font-size: 20px;
   background: lightgreen;
+
 }
