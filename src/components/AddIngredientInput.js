@@ -16,7 +16,7 @@ class AddIngredientInput extends Component {
 
   render() {
     return (
-      <form className="add-ingredient-form" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="add-ingredient-form" onSubmit={this.handleSubmit}>
         <input
           className="add-ingredient-input"
           placeholder="New Ingredient"
