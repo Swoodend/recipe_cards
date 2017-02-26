@@ -5,8 +5,6 @@ import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import DeleteButton from './DeleteButton';
 
-//TODO: implement the AddIngredientInput component
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -22,13 +20,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    document.addEventListener('click', this.handleClick, false);
+    this.refs.outsideOfModal.addEventListener('click', this.handleClick, false);
   }
 
+
   handleClick(e){
-    if (e.target === this.refs.outsideOfModal){
-      this.exitModalMode();
-    }
+    this.exitModalMode();
   }
 
   enterModalMode(){
@@ -61,7 +58,8 @@ class App extends Component {
 
   render() {
     let modal = this.state.modalMode ?
-      <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}/> :
+      <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}
+      /> :
        null;
     let button = this.state.modalMode ? null :
       <NewRecipe enterModalMode={this.enterModalMode}/>
@@ -70,9 +68,11 @@ class App extends Component {
 
     let cards = this.state.recipeCards.map((cardTitle, i) => {
       return (
-        <RecipeCard num={i} key={i} title={cardTitle}>
-          <DeleteButton num={i} deleteCard={this.deleteCard}/>
-        </RecipeCard>
+        <div key={i} ref="maxWidthCardContainer" className="max-width">
+          <RecipeCard num={i} key={i+1} title={cardTitle}>
+            <DeleteButton num={i} deleteCard={this.deleteCard}/>
+          </RecipeCard>
+        </div>
       )
 
     });
