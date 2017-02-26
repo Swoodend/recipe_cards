@@ -9,8 +9,10 @@ class RecipeCard extends Component {
   constructor(props){
     super(props);
     this.watchNewIngredients = this.watchNewIngredients.bind(this);
+    this.listenForHeaderClick = this.listenForHeaderClick.bind(this);
     this.state = {
-      ingredients: []
+      ingredients: [],
+      hidden: false
     };
   }
 
@@ -22,18 +24,33 @@ class RecipeCard extends Component {
     });
   }
 
+  listenForHeaderClick(){
+    console.log('heard in recipeCard');
+    this.setState({
+      hidden: !this.state.hidden
+    });
+  }
 
   render(){
-    return (
-      <div className="max-width">
-        <div className="recipe-card">
-          {this.props.children}
-          <RecipeHeader title={this.props.title}/>
-          <CardBody ingredients={this.state.ingredients}/>
-          <AddIngredientInput addIngredient={this.watchNewIngredients}/>
+    if (!this.state.hidden){
+      return (
+        <div className="max-width">
+          <div className="recipe-card">
+            {this.props.children}
+            <RecipeHeader reportClick={this.listenForHeaderClick} title={this.props.title}/>
+            <CardBody ingredients={this.state.ingredients}/>
+            <AddIngredientInput addIngredient={this.watchNewIngredients}/>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="max-width">
+          <RecipeHeader reportClick={this.listenForHeaderClick} title={this.props.title}/>
+        </div>
+      )
+    }
+
   }
 }
 
