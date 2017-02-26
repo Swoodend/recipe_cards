@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
 class AddIngredientInput extends Component {
+  constructor(props){
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(e){
-    let ingredient = this.refs.newIngredient.value;
+    console.log('called in ingredients input')
     e.preventDefault();
-    console.log('form was subbied');
+    let ingredient = this.refs.newIngredient.value;
+    this.refs.newIngredient.value = '';
+    this.props.addIngredient(ingredient);
   }
 
   render() {
