@@ -68,11 +68,9 @@ class App extends Component {
 
     let cards = this.state.recipeCards.map((cardTitle, i) => {
       return (
-        <div key={i} ref="maxWidthCardContainer" className="max-width">
-          <RecipeCard num={i} key={i+1} title={cardTitle}>
-            <DeleteButton num={i} deleteCard={this.deleteCard}/>
-          </RecipeCard>
-        </div>
+        <RecipeCard num={i} key={i+1} title={cardTitle}>
+          <DeleteButton num={i} deleteCard={this.deleteCard}/>
+        </RecipeCard>
       )
 
     });
