@@ -5,13 +5,11 @@ class CardBody extends Component {
     super(props);
     this.state = {
       hidden: false,
-      ingredients: ['noodles', 'sauce']
     };
   }
 
-
   render(){
-    let ingredients = this.state.ingredients.map((ingredient, i) => {
+    let ingredients = this.props.ingredients.map((ingredient, i) => {
       return (<li key={i}>{ingredient}</li>);
     })
     return (
