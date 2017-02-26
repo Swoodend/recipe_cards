@@ -5,6 +5,13 @@ import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import DeleteButton from './DeleteButton';
 
+//TODO:
+/*
+fix bug where deleteing card 1 before card 2 transfers 1's state to card to
+fix  this you will have to bring ingredients from RecipeCard.js to App.js
+You delete the card from APP js, you also delete its corresponding items  
+*/
+
 class App extends Component {
   constructor(props){
     super(props);
