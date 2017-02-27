@@ -11,7 +11,8 @@ class CardBody extends Component {
   render(){
     let ingredients = this.props.ingredients.map((ingredient, i) => {
       return (<li key={i}>{ingredient}</li>);
-    })
+    });
+    
     return (
       <ul className="ingredient-list">
         {ingredients}
