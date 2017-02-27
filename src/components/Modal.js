@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import getKey from '../helpers/keys';
 
 class Modal extends Component {
   constructor(props){
@@ -8,9 +9,10 @@ class Modal extends Component {
 
   handleSubmit(e){
     let recipeTitle = this.refs.newRecipe.value;
+    let randKey = getKey(50);
     e.preventDefault();
     this.props.exitModalMode();
-    this.props.addNewRecipe(recipeTitle);
+    this.props.addNewRecipe([recipeTitle, randKey]);
   }
   render(){
     return (
