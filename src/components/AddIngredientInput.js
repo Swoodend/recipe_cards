@@ -7,7 +7,6 @@ class AddIngredientInput extends Component {
   }
 
   handleSubmit(e){
-    console.log('called in ingredients input')
     e.preventDefault();
     let ingredient = this.refs.newIngredient.value;
     this.refs.newIngredient.value = '';
