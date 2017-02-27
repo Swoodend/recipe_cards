@@ -3,14 +3,6 @@ import '../../public/App.css';
 import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
-import DeleteButton from './DeleteButton';
-
-//TODO:
-/*
-fix bug where deleteing card 1 before card 2 transfers 1's state to card to
-fix  this you will have to bring ingredients from RecipeCard.js to App.js
-You delete the card from APP js, you also delete its corresponding items  
-*/
 
 class App extends Component {
   constructor(props){
@@ -25,6 +17,7 @@ class App extends Component {
       modalMode: false
     }
   }
+
 
   componentDidMount(){
     this.refs.outsideOfModal.addEventListener('click', this.handleClick, false);
@@ -73,14 +66,13 @@ class App extends Component {
 
     let style = modal ? {filter: "grayscale(100%)"} : null;
 
-    let cards = this.state.recipeCards.map((cardTitle, i) => {
+    let cards = this.state.recipeCards.map((cardArr, i) => {
       return (
-        <RecipeCard num={i} key={i+1} title={cardTitle}>
-          <DeleteButton num={i} deleteCard={this.deleteCard}/>
+        <RecipeCard delCard={this.deleteCard} num={i} key={cardArr[1]} title={cardArr[0]}>
         </RecipeCard>
       )
-
     });
+
     return (
       <div>
         <div style={style} ref="outsideOfModal" className="recipe-cards">
