@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeHeader from './RecipeHeader';
 import CardBody from './CardBody';
 import AddIngredientInput from './AddIngredientInput';
+import DeleteButton from './DeleteButton';
 
 //this.props.num is the card number
 
@@ -10,6 +11,7 @@ class RecipeCard extends Component {
     super(props);
     this.watchNewIngredients = this.watchNewIngredients.bind(this);
     this.listenForHeaderClick = this.listenForHeaderClick.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
     this.state = {
       ingredients: [],
       hidden: false
@@ -25,9 +27,16 @@ class RecipeCard extends Component {
   }
 
   listenForHeaderClick(){
-    console.log('heard in recipeCard');
     this.setState({
       hidden: !this.state.hidden
+    });
+  }
+
+  deleteCard(){
+    let ingredients = this.state.ingredients;
+    this.props.delCard(this.props.num);
+    this.setState({
+      ingredients
     });
   }
 
@@ -36,7 +45,7 @@ class RecipeCard extends Component {
       return (
         <div className="max-width">
           <div className="recipe-card">
-            {this.props.children}
+            <DeleteButton click={this.deleteCard}/>
             <RecipeHeader reportClick={this.listenForHeaderClick} title={this.props.title}/>
             <CardBody ingredients={this.state.ingredients}/>
             <AddIngredientInput addIngredient={this.watchNewIngredients}/>
@@ -48,7 +57,7 @@ class RecipeCard extends Component {
         <div className="max-width">
           <RecipeHeader reportClick={this.listenForHeaderClick} title={this.props.title}/>
         </div>
-      )
+      );
     }
 
   }
