@@ -12,6 +12,7 @@ class RecipeCard extends Component {
     this.watchNewIngredients = this.watchNewIngredients.bind(this);
     this.listenForHeaderClick = this.listenForHeaderClick.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+    this.ingredientWasEdited= this.ingredientWasEdited.bind(this);
     this.state = {
       ingredients: [],
       hidden: false
@@ -40,6 +41,14 @@ class RecipeCard extends Component {
     });
   }
 
+  ingredientWasEdited(i, value){
+    let currentIngredients = this.state.ingredients
+    currentIngredients[i] = value;
+    this.setState({
+      ingredients: currentIngredients
+    });
+  }
+
   render(){
     if (!this.state.hidden){
       return (
@@ -47,7 +56,7 @@ class RecipeCard extends Component {
           <div className="recipe-card">
             <DeleteButton click={this.deleteCard}/>
             <RecipeHeader reportClick={this.listenForHeaderClick} title={this.props.title}/>
-            <CardBody ingredients={this.state.ingredients}/>
+            <CardBody ingredientWasEdited={this.ingredientWasEdited} ingredients={this.state.ingredients}/>
             <AddIngredientInput addIngredient={this.watchNewIngredients}/>
           </div>
         </div>
