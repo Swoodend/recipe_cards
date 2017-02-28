@@ -12,12 +12,12 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.addNewRecipe = this.addNewRecipe.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+    this.addNewIngredient = this.addNewIngredient.bind(this);
     this.state = {
       recipeCards: [],
       modalMode: false
     }
   }
-
 
   componentDidMount(){
     this.refs.outsideOfModal.addEventListener('click', this.handleClick, false);
@@ -56,6 +56,14 @@ class App extends Component {
     });
   }
 
+  addNewIngredient(recipeNum, ingredient){
+    let newState = this.state.recipeCards;
+    newState[recipeNum].ingredients.push(ingredient);
+    this.setState({
+      recipeCards: newState
+    });
+  }
+
   render() {
     let modal = this.state.modalMode ?
       <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}
@@ -66,10 +74,16 @@ class App extends Component {
 
     let style = modal ? {filter: "grayscale(100%)"} : null;
 
-    let cards = this.state.recipeCards.map((cardArr, i) => {
+    let cards = this.state.recipeCards.map((cardObj, i) => {
       return (
-        <RecipeCard delCard={this.deleteCard} num={i} key={cardArr[1]} title={cardArr[0]}>
-        </RecipeCard>
+        <RecipeCard
+          ingredients={cardObj.ingredients}
+          key={cardObj.key}
+          title={cardObj.title}
+          num={i}
+          addNewIngredient={this.addNewIngredient}
+          delCard={this.deleteCard}
+        ></RecipeCard>
       )
     });
 

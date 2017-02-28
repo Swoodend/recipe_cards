@@ -14,7 +14,7 @@ class RecipeHeader extends Component {
     let style = {borderBottom: '2px solid red'};
     return (
       <h1 onClick={this.handleClick} style={style}>{this.props.title}</h1>
-    )
+    );
   }
 }
 

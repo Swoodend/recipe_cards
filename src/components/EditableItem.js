@@ -17,6 +17,8 @@ class EditableItem extends Component {
     this.setState({
       editing: true,
       val: ''
+    }, () => {
+      this.refs.textInput.focus();
     });
   }
 
@@ -26,15 +28,13 @@ class EditableItem extends Component {
       editing: false,
       val: this.refs.textInput.value,
       lastVal: this.refs.textInput.value
-    }, () => {
-      this.props.watchForEdits(this.props.num, this.state.val);
     });
   }
 
   handleChange(e){
     this.setState({
       lastVal: e.target.value
-    })
+    });
   }
 
   render(){
@@ -49,9 +49,7 @@ class EditableItem extends Component {
         </form>
       );
     }
-
   }
-
 }
 
 export default EditableItem;

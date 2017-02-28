@@ -4,14 +4,9 @@ import EditableItem from './EditableItem';
 class CardBody extends Component {
   constructor(props){
     super(props);
-    this.watchForEdits = this.watchForEdits.bind(this);
     this.state = {
       hidden: false
     };
-  }
-
-  watchForEdits(i, value){
-    this.props.ingredientWasEdited(i, value);
   }
 
   render(){

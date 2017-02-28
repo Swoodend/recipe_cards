@@ -12,7 +12,13 @@ class Modal extends Component {
     let randKey = getKey(50);
     e.preventDefault();
     this.props.exitModalMode();
-    this.props.addNewRecipe([recipeTitle, randKey]);
+    this.props.addNewRecipe(
+      {
+        title: recipeTitle,
+        key: randKey,
+        ingredients: []
+      }
+    );
   }
   render(){
     return (
