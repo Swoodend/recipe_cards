@@ -23,9 +23,11 @@ class Modal extends Component {
   render(){
     return (
       <div className="modal">
-        <h3>Create a new recipe</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className="modal-form" onSubmit={this.handleSubmit}>
           <input ref="newRecipe" className="new-recipe-input" type="text"/>
+          <div className="text-container">
+            <p className="sub-modal-text">New Recipe</p>
+          </div>
           <button className="save" type="submit">Save</button>
         </form>
       </div>
