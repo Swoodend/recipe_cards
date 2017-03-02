@@ -72,7 +72,7 @@ class App extends Component {
     let button = this.state.modalMode ? null :
       <NewRecipe enterModalMode={this.enterModalMode}/>
 
-    let style = modal ? {filter: "grayscale(100%)"} : null;
+    let style = modal ? {filter: "blur(5px) grayscale(100%)"} : null;
 
     let cards = this.state.recipeCards.map((cardObj, i) => {
       return (
