@@ -4,6 +4,7 @@ import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import Nav from './Nav';
+import getKey from '../helpers/keys';
 
 class App extends Component {
   constructor(props){
@@ -18,6 +19,27 @@ class App extends Component {
       recipeCards: [],
       modalMode: false
     }
+  }
+
+  componentWillMount(){
+    let recipes = [
+      {
+        title: 'Spaghetti',
+        key: getKey(50),
+        ingredients: ['noodles', 'sauce', 'pasta']
+      },
+
+      {
+        title: 'Ham Sandwich',
+        key: getKey(50),
+        ingredients: ['bread', 'lettuce', 'mustard', 'cheese']
+      }
+    ];
+
+    localStorage.setItem('recipes',JSON.stringify(recipes));
+    this.setState({
+      recipeCards: JSON.parse(localStorage.getItem('recipes'))
+    });
   }
 
   componentDidMount(){
