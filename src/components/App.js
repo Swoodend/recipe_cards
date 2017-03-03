@@ -3,6 +3,7 @@ import '../../public/App.css';
 import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
+import Nav from './Nav';
 
 class App extends Component {
   constructor(props){
@@ -89,9 +90,9 @@ class App extends Component {
 
     return (
       <div>
+        <Nav />
         <div style={style} ref="outsideOfModal" className="recipe-cards">
           <div className="card-container">
-            <h1 className="main-header">Recipe Cards</h1>
             {cards}
           </div>
           {button}
