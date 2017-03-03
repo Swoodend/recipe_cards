@@ -26,7 +26,8 @@ html, body{
   min-height: 100vh;
   min-width: 100vw;
   position: relative;
-  background: #C1E1A6
+  background-color: #C1E1A6;
+  background: url(http://res.cloudinary.com/ddbeeuyr4/image/upload/c_scale,h_800,w_800/v1488513940/topography_u6doyy.png) repeat center center fixed;
 }
 
 .modal{
@@ -122,7 +123,8 @@ html, body{
   text-align: center;
   width: 500px;
   min-height: 200px;
-  background: white;
+  background: #eff5ff;
+  outline: 2px solid black;
 }
 
 .recipe-card h1 {
