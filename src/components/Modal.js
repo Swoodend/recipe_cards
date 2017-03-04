@@ -20,6 +20,11 @@ class Modal extends Component {
       }
     );
   }
+
+  componentDidMount(){
+    this.refs.newRecipe.focus();
+  }
+  
   render(){
     return (
       <div className="modal">
