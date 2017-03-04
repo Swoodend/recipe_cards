@@ -4,7 +4,7 @@ import Modal from './Modal';
 import NewRecipe from './NewRecipe';
 import RecipeCard from './RecipeCard';
 import Nav from './Nav';
-import getKey from '../helpers/keys';
+import getLocalStorage from '../helpers/localstorage';
 
 class App extends Component {
   constructor(props){
@@ -51,36 +51,29 @@ class App extends Component {
   }
 
   addNewRecipe(recipe){
-    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    let recipes = getLocalStorage();
     recipes.push(recipe);
     localStorage.setItem('recipes', JSON.stringify({recipeCards : recipes}));
-    console.log('pushed the recipe in, localStorage is now', localStorage.getItem('recipes'));
     this.setState({
       recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
-    }, () => {
-      console.log('state is set, it is', this.state);
     });
   }
 
   deleteCard(i){
-    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    let recipes = getLocalStorage();
     recipes.splice(i, 1);
     localStorage.setItem('recipes', JSON.stringify({recipeCards : recipes}));
     this.setState({
       recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
-    }, () => {
-      console.log('card was deleted, state is now', this.state);
     });
   }
 
   addNewIngredient(recipeNum, ingredient){
-    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    let recipes = getLocalStorage();
     recipes[recipeNum].ingredients.push(ingredient);
     localStorage.setItem('recipes', JSON.stringify({recipeCards: recipes}));
     this.setState({
       recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
-    }, () => {
-      console.log('ingredient was added, state is now', this.state);
     });
   }
 
