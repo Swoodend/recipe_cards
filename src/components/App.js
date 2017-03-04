@@ -15,32 +15,19 @@ class App extends Component {
     this.addNewRecipe = this.addNewRecipe.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.addNewIngredient = this.addNewIngredient.bind(this);
+
+    if (!localStorage.getItem('recipes')){
+      localStorage.setItem('recipes', JSON.stringify({
+        recipeCards: []
+      }));
+    }
+
     this.state = {
-      recipeCards: [],
+      recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards,
       modalMode: false
     }
   }
 
-  componentWillMount(){
-    let recipes = [
-      {
-        title: 'Spaghetti',
-        key: getKey(50),
-        ingredients: ['noodles', 'sauce', 'pasta']
-      },
-
-      {
-        title: 'Ham Sandwich',
-        key: getKey(50),
-        ingredients: ['bread', 'lettuce', 'mustard', 'cheese']
-      }
-    ];
-
-    localStorage.setItem('recipes',JSON.stringify(recipes));
-    this.setState({
-      recipeCards: JSON.parse(localStorage.getItem('recipes'))
-    });
-  }
 
   componentDidMount(){
     this.refs.outsideOfModal.addEventListener('click', this.handleClick, false);
@@ -64,26 +51,36 @@ class App extends Component {
   }
 
   addNewRecipe(recipe){
-    let newRecipes = this.state.recipeCards;
-    newRecipes.push(recipe);
+    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    recipes.push(recipe);
+    localStorage.setItem('recipes', JSON.stringify({recipeCards : recipes}));
+    console.log('pushed the recipe in, localStorage is now', localStorage.getItem('recipes'));
     this.setState({
-      recipeCards: newRecipes
+      recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
+    }, () => {
+      console.log('state is set, it is', this.state);
     });
   }
 
   deleteCard(i){
-    let removedCard = this.state.recipeCards;
-    removedCard.splice(i, 1);
+    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    recipes.splice(i, 1);
+    localStorage.setItem('recipes', JSON.stringify({recipeCards : recipes}));
     this.setState({
-      recipeCards: removedCard
+      recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
+    }, () => {
+      console.log('card was deleted, state is now', this.state);
     });
   }
 
   addNewIngredient(recipeNum, ingredient){
-    let newState = this.state.recipeCards;
-    newState[recipeNum].ingredients.push(ingredient);
+    let recipes = JSON.parse(localStorage.getItem('recipes')).recipeCards;
+    recipes[recipeNum].ingredients.push(ingredient);
+    localStorage.setItem('recipes', JSON.stringify({recipeCards: recipes}));
     this.setState({
-      recipeCards: newState
+      recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
+    }, () => {
+      console.log('ingredient was added, state is now', this.state);
     });
   }
 
