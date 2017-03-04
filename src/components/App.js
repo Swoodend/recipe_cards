@@ -15,7 +15,7 @@ class App extends Component {
     this.addNewRecipe = this.addNewRecipe.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.addNewIngredient = this.addNewIngredient.bind(this);
-
+    this.updateEditedIngredient = this.updateEditedIngredient.bind(this);
     if (!localStorage.getItem('recipes')){
       localStorage.setItem('recipes', JSON.stringify({
         recipeCards: []
@@ -77,6 +77,15 @@ class App extends Component {
     });
   }
 
+  updateEditedIngredient(cardNum, ingredientNum, newIngredient){
+    let recipes = getLocalStorage();
+    recipes[cardNum].ingredients[ingredientNum] = newIngredient;
+    localStorage.setItem('recipes', JSON.stringify({recipeCards: recipes}));
+    this.setState({
+      recipeCards: JSON.parse(localStorage.getItem('recipes')).recipeCards
+    });
+  }
+
   render() {
     let modal = this.state.modalMode ?
       <Modal addNewRecipe={this.addNewRecipe} exitModalMode={this.exitModalMode}
@@ -93,9 +102,10 @@ class App extends Component {
           ingredients={cardObj.ingredients}
           key={cardObj.key}
           title={cardObj.title}
-          num={i}
+          cardNum={i}
           addNewIngredient={this.addNewIngredient}
           delCard={this.deleteCard}
+          reportEditedIngredient={this.updateEditedIngredient}
         ></RecipeCard>
       )
     });
