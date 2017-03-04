@@ -102,6 +102,7 @@ class App extends Component {
           ingredients={cardObj.ingredients}
           key={cardObj.key}
           title={cardObj.title}
+          num={i}
           cardNum={i}
           addNewIngredient={this.addNewIngredient}
           delCard={this.deleteCard}
