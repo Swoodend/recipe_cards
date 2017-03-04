@@ -28,6 +28,8 @@ class EditableItem extends Component {
       editing: false,
       val: this.refs.textInput.value,
       lastVal: this.refs.textInput.value
+    }, () => {
+      this.props.watchForEdits(this.props.cardNum, this.props.num, this.state.val);
     });
   }
 
